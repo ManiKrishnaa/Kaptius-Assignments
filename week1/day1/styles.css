@@ -1,0 +1,225 @@
+body {
+    font-family: 'Book Antiqua',serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.resume {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 80px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    padding-bottom: 10px;
+    border-width: medium;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header h2 {
+    margin: 5px 0;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-width: medium;
+    padding: 10px 0;
+}
+.contact-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-left: 2px solid black;
+    border-width: medium;
+}
+.contact-item:first-child {
+    border-left: none; 
+}
+.contact-item p {
+    margin: 0;
+}
+
+.objective {
+    padding-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 70px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+    border-width: medium;
+}
+.objective h3 {
+    margin: 0;
+    align-self: flex-start;
+}
+.objective p {
+    margin: 0; 
+}
+
+.education {
+    display: flex;
+    align-items: flex-start; 
+    gap: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+    border-width: medium;
+}
+.education h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+.education-content {
+    display: flex;
+    flex-direction: column; 
+}
+
+.education-content p {
+    margin: 0; 
+    margin-bottom: 5px; 
+}
+
+.education-content p:first-child {
+    margin-bottom: 20px; 
+}
+
+.education-content p:not(:first-child) {
+    margin-bottom: 5px; 
+}
+
+.skills {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column; 
+    border-bottom: 2px solid black;
+    border-width: medium;
+    gap: 20px;
+}
+
+.techskills, .softskills {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.techskills h3, .softskills h3 {
+    margin: 0;
+    flex: 0 0 150px; 
+}
+
+.techskills ul, .softskills ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: disc; 
+    list-style-position: inside; 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    flex: 1; 
+}
+
+.techskills li, .softskills li {
+    margin: 0; 
+}
+.projects {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; 
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+    border-width: medium;
+}
+
+.projects h3 {
+    grid-column: span 2; 
+    margin: 0;
+    padding-left: 8px;
+    font-size: 1.5em;
+}
+
+.project1, .project2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.project1 h3, .project2 h3 {
+    margin: 0; 
+    font-size: 1.2em;
+}
+
+.project1 p, .project2 p {
+    margin: 0;
+}
+
+
+.experience {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+    border-width: medium;
+}
+ .experience h3{
+    font-size: 1.5em;
+ }
+.exp1 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.exp1 h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.exp1 .details {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.exp1 .company {
+    font-style: italic; 
+    margin: 0;
+}
+
+.exp1 .duration {
+    font-style: italic;
+    margin: 0; 
+}
+
+.achievements , .extra{
+    border-bottom: 2px solid black;
+    border-width: medium;
+    padding-bottom: 10px;
+}
+
+.languages ul {
+    display: grid;
+    grid-auto-flow: column;
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0;
+    gap: 10px;
+}
+
+.languages li {
+    margin: 0; 
+}
