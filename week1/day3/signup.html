@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Electro Store</title>
+    <style>
+        body, h1, h2, h3, p, ul {
+            font-family: 'Book Antiqua', serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+
+        form input {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            width: calc(100% - 20px);
+        }
+
+        form input:focus {
+            border-color: #737678;
+            outline: none;
+        }
+
+        form button {
+            background: #737678;
+            color: #fff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background: gray;
+        }
+        .container p{
+            padding-top: 10px;
+            text-align: center;
+        }
+        .container p a{
+            color: #737678;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form onsubmit="return Validate()">
+            <input type="text" id="signup-name" name="signup-name" placeholder="Name" required>
+            <input type="text" id="signup-mobile" name="signup-mobile" placeholder="Mobile" required>
+            <input type="email" id="signup-email" name="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" name="signup-password" placeholder="Password" required>
+            <input type="password" id="signup-confirm-password" name="signup-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Signup</button>
+        </form>
+        <p>Already have an account? <a href="./login.html">Login</a></p>
+    </div>
+</body>
+<script>
+    function Validate() {
+        const name = document.getElementById("signup-name").value;
+        const email = document.getElementById("signup-email").value;
+        const phone = document.getElementById("signup-mobile").value;
+        const pwd = document.getElementById("signup-password").value;
+        const confirmpwd = document.getElementById("signup-confirm-password").value;
+
+        if (phone.length !== 10) {
+            alert("Mobile number should be 10 digits");
+            return false;
+        }
+
+        if (pwd !== confirmpwd) {
+            alert("Passwords do not match");
+            return false;
+        }
+
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const userExists = users.some(user => user.email === email || user.phone === phone);
+        if (userExists) {
+            alert("User with this email or phone number already exists");
+            return false;
+        }
+
+        users.push({
+            name: name,
+            email: email,
+            phone: phone,
+            password: pwd
+        });
+
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert("Signup successful!");
+        window.location.href = './login.html';
+        return false; 
+    }
+</script>
+</html>

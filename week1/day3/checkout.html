@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Electro Store</title>
+    <style>
+        body, h1, h2, p {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        body {
+            line-height: 1.6;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .bill-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bill-container h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .bill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .bill-item h3 {
+            margin: 0;
+        }
+
+        .bill-item p {
+            margin: 0;
+            color: #555;
+        }
+
+        .total {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: #737678;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+            text-align: center;
+            display: block;
+            width: 90%;
+        }
+
+        .btn-back:hover {
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="bill-container">
+        <h2>Your Bill</h2>
+        <div id="bill-items"></div>
+        <div id="bill-total" class="total"></div>
+        <a href="./index.html" class="btn-back">Back to Home</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const billItemsContainer = document.getElementById('bill-items');
+            const billTotalContainer = document.getElementById('bill-total');
+
+            let user = JSON.parse(localStorage.getItem('loggedInUser'));
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cart.length === 0) {
+                billItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                billTotalContainer.innerHTML = '';
+                return;
+            }
+
+            cart = cart.filter(item => item.email === user.email);
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const billItem = document.createElement('div');
+                billItem.className = 'bill-item';
+                billItem.innerHTML = `
+                    <div>
+                        <h3>${item.name}</h3>
+                        <p>Price: ₹${item.price}</p>
+                    </div>
+                `;
+                billItemsContainer.appendChild(billItem);
+                total += parseFloat(item.price); 
+            });
+
+            billTotalContainer.innerHTML = `<p>Total: ₹${total.toFixed(2)}</p>`;
+
+            localStorage.removeItem('checkoutCart');
+        });
+    </script>
+</body>
+</html>
